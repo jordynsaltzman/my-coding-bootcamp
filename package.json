@@ -5,6 +5,7 @@
     "main": "server.js",
     "dependencies": {
         "@hapi/joi": "^17.1.1",
+        "bcryptjs": "^2.4.3",
         "bootstrap": "^4.4.1",
         "concurrently": "^5.1.0",
         "cors": "^2.8.5",
