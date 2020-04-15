@@ -2,7 +2,7 @@
 
 Create topics of interest, save online resources, keep track of progress, learn to code!
 
-Build using the MERN stack (MongoDB, Express.js, React, and Node.js). I will also implement user login with password encryption and JSON Web Token authentication. Stay tuned!
+Built using the MERN stack (MongoDB, Express.js, React, and Node.js). I will also implement user login with password encryption and JSON Web Token authentication. Stay tuned!
 
 ## Description
 
