@@ -18,4 +18,4 @@ This app will use the MERN stack (MongoDB, Express.js, React, and Node.js). I wi
 
 #### Mobile
 
-![Mobile version](client/src/images/MyCodingBootcampScreenshotMobile.png)
+![Mobile version](./client/src/images/myCodingBootcampScreenshotMobile.png)
