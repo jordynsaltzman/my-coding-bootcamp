@@ -9,7 +9,7 @@ const topicRoutes = require("./routes/topics");
 const resourceRoutes = require("./routes/resources");
 const userRoutes = require("./routes/users");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 
@@ -17,9 +17,9 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //route middleware
-// app.use("/topics", topicRoutes);
+app.use("/topics", topicRoutes);
 // app.use("/resources", resourceRoutes);
-// app.use("/users", userRoutes);
+app.use("/users", userRoutes);
 
 // Serve up static assets on heroku
 if (process.env.NODE_ENV === "production") {

@@ -1,12 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { registerValidation, loginValidation } = require("../validation");
+const Joi = require("@hapi/joi");
 
 router.post("/register", async (req, res) => {
   //validate the data before making a user
-  const { error } = registerValidation(req.body);
+  const schema = Joi.object({
+    firstName: Joi.string(),
+    lastName: Joi.string(),
+    email: Joi.string().email(),
+    password: Joi.string().min(6),
+  });
+  const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   //make sure user isnt already in the database
@@ -26,7 +33,7 @@ router.post("/register", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.send({ user: user._id });
+    res.send({ user: savedUser._id });
   } catch (err) {
     res.status(400).send(err);
   }
@@ -34,7 +41,11 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   //validate the data before loggin in user
-  const { error } = loginValidation(req.body);
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+  });
+  const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   //make sure user is in the database
@@ -44,6 +55,10 @@ router.post("/login", async (req, res) => {
   //check if password is correct
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Invalid password.");
+
+  //create and assign a token
+  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  res.header("auth-token", token).send(token);
 
   res.send("Logged in");
 });
