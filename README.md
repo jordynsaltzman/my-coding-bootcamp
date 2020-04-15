@@ -14,8 +14,8 @@ This app will use the MERN stack (MongoDB, Express.js, React, and Node.js). I wi
 
 #### Desktop
 
-![Desktop version](./client/src/images/MyCodingBootcampScreenshot.png)
+![Desktop version](client/src/images/MyCodingBootcampScreenshot.png)
 
 #### Mobile
 
-![Mobile version](./client/src/images/MyCodingBootcampScreenshotMobile.png)
+![Mobile version](client/src/images/MyCodingBootcampScreenshotMobile.png)
