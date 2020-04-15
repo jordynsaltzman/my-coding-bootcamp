@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./LoginWindow.module.css";
 import { Container, Row, Col, Button } from "reactstrap";
 import classnames from "classnames";
+import logo from "../../images/myCodingBootcampLogo.png";
 
 const LoginWindow = () => {
   const [activeView, setActiveView] = useState("1");
@@ -15,6 +16,20 @@ const LoginWindow = () => {
 
   return (
     <Container className={styles.container} fluid={true}>
+      <Row
+        style={{
+          position: "absolute",
+          top: "0",
+          width: "100vw",
+          padding: "8px",
+          backgroundColor: "rgba(255, 255, 255)",
+        }}
+      >
+        <Col>
+          <img className={styles.logo} src={logo} alt="logo" />
+        </Col>
+      </Row>
+
       <Row>
         {activeView === "1" ? (
           <Col className={styles.loginBox} sm="12" md={{ size: 4, offset: 4 }}>
