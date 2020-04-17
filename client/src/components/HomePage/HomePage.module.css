@@ -1,10 +1,29 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  padding-top: 70px;
   background-color: #66c7c569;
   background-image: url("../../images/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
   background-blend-mode: lighten;
   background-size: cover;
   height: 100vh;
+}
+
+.addBtn {
+  font-family: "Karla", sans-serif;
+  width: 80%;
+  margin: 15px 20px;
+  padding: 10px 5px !important;
+  border-radius: 20px !important;
+  border-color: #66c7c5 !important;
+  color: white !important;
+  background-color: #66c7c5 !important;
+  transition: all ease-in-out 0.5s !important;
+}
+
+.addBtn:hover {
+  background-color: rgb(255, 0, 70) !important;
+  border-color: rgb(255, 0, 70) !important;
+  color: white !important;
 }

@@ -1,0 +1,20 @@
+.tabs {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 30px !important;
+}
+
+.active {
+  background-color: rgb(255, 0, 70) !important;
+  color: white !important;
+  border: none !important ;
+  margin: 0px 1px;
+}
+
+.inactive {
+  background-color: rgba(0, 0, 0, 0.678) !important;
+  color: white !important;
+  border: none !important ;
+  margin: 0px 1px;
+}

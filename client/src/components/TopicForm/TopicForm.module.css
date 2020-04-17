@@ -1,0 +1,54 @@
+.formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  height: 40vh;
+  background-color: rgba(0, 0, 0, 0.918);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.582);
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: white;
+}
+.inputGroup {
+  font-family: "Karla", sans-serif !important;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.384) !important;
+}
+.input {
+  font-family: "Karla", sans-serif !important;
+  color: #222;
+  background: transparent !important;
+  transition: background-color ease-in-out 0.5s !important;
+}
+
+.input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  color: white !important;
+  background-color: rgb(255, 0, 70) !important;
+  border-color: rgb(255, 0, 70) !important;
+}
+
+.button {
+  font-family: "Karla", sans-serif !important;
+}
+
+@media only screen and (min-width: 470px) {
+  form {
+    padding: 0px 30px;
+  }
+}
