@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #66c7c569;
+  background-image: url("../../images/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
+  background-blend-mode: lighten;
+  background-size: cover;
+  height: 100vh;
+}

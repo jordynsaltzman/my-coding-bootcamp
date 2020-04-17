@@ -4,7 +4,7 @@
   justify-content: center;
   background-color: #66c7c569;
   background-image: url("../../images/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
-
+  overflow-y: hidden;
   background-blend-mode: lighten;
   background-size: cover;
   height: 100vh;
@@ -13,18 +13,9 @@
 .loginBox {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-
   margin: 30px;
   height: 80vh;
   background-color: rgba(0, 0, 0, 0.918);
-  /* background: #9152f8;
-  background: -webkit-linear-gradient(bottom, #6768af 15%, #a319df 100%);
-  background: -o-linear-gradient(bottom, #6768af 15%, #a319df 100%);
-  background: -moz-linear-gradient(bottom, #6768af 15%, #a319df 100%);
-  background: linear-gradient(bottom, 15% #6768af, #a319df 100%); */
-
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.582);
   border-radius: 10px;
@@ -42,62 +33,9 @@
 .titleInactiveCol {
   background-color: rgba(255, 255, 255, 0.096);
 }
+
 .title {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
   font-size: 30px;
-}
-.message {
-  font-family: "Inter", sans-serif;
-  padding-top: 20px;
-  font-size: 30px;
-}
-
-.form {
-  margin: 0 20px;
-  padding: 0px 5px !important
-  ;
-}
-
-.loginBtn {
-  font-family: "Karla", sans-serif;
-  width: 100%;
-  margin: 20px 0px;
-  padding: 10px 5px !important;
-  border-radius: 20px !important;
-  border-color: #66c7c5 !important;
-  color: white !important;
-  background-color: #66c7c5 !important;
-}
-
-.loginBtn:hover {
-  background: transparent !important;
-  color: #66c7c5 !important;
-}
-
-.input {
-  font-family: "Karla", sans-serif;
-  width: 100%;
-  margin: 10px 0px;
-  padding: 8px 20px;
-  border-radius: 20px;
-  border: 1px solid white;
-  color: white;
-  background: transparent;
-  transition: background-color ease-in-out 0.5s;
-}
-
-.input:focus {
-  outline: none;
-  background-color: rgb(255, 0, 70);
-  border-color: rgb(255, 0, 70);
-}
-
-.logo {
-  height: 32px;
-}
-
-@media only screen and (max-width: 600px) {
-  .logo {
-    max-height: 25px;
-  }
 }

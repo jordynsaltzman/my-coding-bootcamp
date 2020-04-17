@@ -1,0 +1,70 @@
+.message {
+  font-family: "Roboto Condensed", sans-serif;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+.form {
+  margin: 0 20px;
+  padding: 0px 5px !important;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  flex: 1;
+}
+
+.formCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBtn {
+  font-family: "Karla", sans-serif;
+  width: 100%;
+  margin: 20px 0px;
+  padding: 10px 5px !important;
+  border-radius: 20px !important;
+  border-color: #66c7c5 !important;
+  color: white !important;
+  background-color: #66c7c5 !important;
+}
+
+.loginBtn:hover {
+  background: transparent !important;
+  color: #66c7c5 !important;
+}
+
+.input {
+  font-family: "Karla", sans-serif;
+  width: 100%;
+  margin: 10px 0px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid white;
+  color: white;
+  background: transparent;
+  transition: background-color ease-in-out 0.5s;
+}
+
+.input:focus {
+  outline: none;
+  background-color: rgb(255, 0, 70);
+  border-color: rgb(255, 0, 70);
+}
+
+@media only screen and (max-height: 450px) {
+  .input {
+    padding: 5px 20px;
+    margin: 5px 0px;
+  }
+  .loginBtn {
+    margin: 10px 0px;
+    padding: 5px 5px !important;
+  }
+}
