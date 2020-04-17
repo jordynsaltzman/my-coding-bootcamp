@@ -5,14 +5,10 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
   Col,
 } from "reactstrap";
-import classnames from "classnames";
+import ResourceCard from "../ResourceCard/ResourceCard";
 import styles from "./TopicTabs.module.css";
 
 const TopicTabs = (props) => {
@@ -35,7 +31,7 @@ const TopicTabs = (props) => {
                 toggle("1");
               }}
             >
-              Tab1
+              React
             </NavLink>
           </NavItem>
           <NavItem>
@@ -47,7 +43,7 @@ const TopicTabs = (props) => {
                 toggle("2");
               }}
             >
-              Tab2
+              Redux
             </NavLink>
           </NavItem>
           <NavItem>
@@ -72,46 +68,9 @@ const TopicTabs = (props) => {
           </TabPane>
           <TabPane tabId="2">
             <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Resource Title</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Practice</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Resource Title</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Practice</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Resource Title</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Practice</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Resource Title</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Practice</Button>
-                </Card>
-              </Col>
+              <ResourceCard />
+              <ResourceCard />
+              <ResourceCard />
             </Row>
           </TabPane>
         </TabContent>

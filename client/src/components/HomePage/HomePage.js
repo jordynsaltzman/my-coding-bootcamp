@@ -13,20 +13,10 @@ const HomePage = () => {
       <Navbar />
       {/* <TopicForm /> */}
       <Row>
-        <Col
-          sm="12"
-          md="4"
-          lg="4"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: "30px",
-          }}
-        >
+        <Col sm="12" md="4" lg="4" className={styles.btnCol}>
           <Button className={styles.addBtn}>Add New Resource</Button>
           <Button className={styles.addBtn}>Add New Topic </Button>
-          <Button className={styles.addBtn}>View Progress </Button>
+          <Button className={styles.addBtn}>View My Progress </Button>
         </Col>
         <Col sm="12" md="8" lg="8">
           <TopicTabs />

@@ -5,6 +5,7 @@
   padding-top: 70px;
   background-color: #66c7c569;
   background-image: url("../../images/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
+  background-repeat: repeat;
   background-blend-mode: lighten;
   background-size: cover;
   height: 100vh;
@@ -12,18 +13,45 @@
 
 .addBtn {
   font-family: "Karla", sans-serif;
-  width: 80%;
-  margin: 15px 20px;
+
+  width: 60%;
+
+  margin: 15px;
+  font-size: 18px !important;
   padding: 10px 5px !important;
   border-radius: 20px !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.37) !important;
   border-color: #66c7c5 !important;
   color: white !important;
   background-color: #66c7c5 !important;
-  transition: all ease-in-out 0.5s !important;
+  transition: all ease-out 0.5s !important;
 }
 
 .addBtn:hover {
   background-color: rgb(255, 0, 70) !important;
   border-color: rgb(255, 0, 70) !important;
   color: white !important;
+}
+
+.btnCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+  .addBtn {
+    width: 30%;
+    margin: 5px 10px;
+    border-radius: 10px !important;
+  }
+  .btnCol {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0px 0px 25px 0px;
+  }
 }

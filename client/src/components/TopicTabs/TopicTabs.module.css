@@ -1,20 +1,33 @@
 .tabs {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 20px;
-  margin-bottom: 30px !important;
+  margin-bottom: 5px !important;
+}
+.active:hover,
+.inactive:hover {
+  cursor: pointer;
 }
 
-.active {
-  background-color: rgb(255, 0, 70) !important;
+.active,
+.inactive:hover {
+  background-color: #222 !important;
   color: white !important;
-  border: none !important ;
+  border-color: #222 !important;
   margin: 0px 1px;
 }
 
 .inactive {
-  background-color: rgba(0, 0, 0, 0.678) !important;
+  background-color: rgba(34, 34, 34, 0.76) !important;
   color: white !important;
-  border: none !important ;
+  border-color: rgba(34, 34, 34, 0.76) !important;
   margin: 0px 1px;
+  transition: all ease-in-out 0.3s;
 }
+
+/* //  background-color: #66c7c5 !important;
+transition: all ease-out 0.5s !important;
+}
+
+.addBtn:hover {
+background-color: rgb(255, 0, 70) !important; */
