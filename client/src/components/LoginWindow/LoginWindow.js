@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { userLogin, userLogout } from "../../actions/userActions";
+import { connect } from "react-redux";
 import styles from "./LoginWindow.module.css";
 import { Container, Row, Col, Button } from "reactstrap";
 import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
 import Navbar from "../Navbar/Navbar";
 
-const LoginWindow = () => {
+const LoginWindow = (props) => {
   const [activeView, setActiveView] = useState("1");
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: "",
@@ -89,4 +91,15 @@ const LoginWindow = () => {
   );
 };
 
-export default LoginWindow;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
+const mapDispatchToProps = {
+  userLogin,
+  userLogout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginWindow);
+
+// export default LoginWindow;

@@ -43,16 +43,19 @@ export const loginFailure = () => {
 export const userSignup = (userInfo) => {
   return (dispatch) => {
     dispatch(signupRequest());
-    return axios
-      .post(`${apiUrl}/users/signup`, userInfo)
-      .then((response) => {
-        dispatch(signupSuccess(response.data.user));
-        sessionStorage.setItem("token", response.data.token);
-        sessionStorage.setItem("userId", response.data.user._id);
-      })
-      .catch((error) => {
-        dispatch(signupFailure());
-      });
+    return (
+      axios
+        .post("/users/signup", userInfo)
+        // .post(`${apiUrl}/users/signup`, userInfo)
+        .then((response) => {
+          dispatch(signupSuccess(response.data.user));
+          sessionStorage.setItem("token", response.data.token);
+          sessionStorage.setItem("userId", response.data.user._id);
+        })
+        .catch((error) => {
+          dispatch(signupFailure());
+        })
+    );
   };
 };
 
@@ -86,15 +89,18 @@ export const userDelete = () => {
   };
   return (dispatch) => {
     dispatch(deleteRequest());
-    return axios
-      .delete(`${apiUrl}/users/${userId}`, config)
-      .then((response) => {
-        dispatch(deleteSuccess());
-        sessionStorage.clear();
-      })
-      .catch((error) => {
-        dispatch(deleteFailure());
-      });
+    return (
+      axios
+        .delete("/users/${userId}", config)
+        // .delete(`${apiUrl}/users/${userId}`, config)
+        .then((response) => {
+          dispatch(deleteSuccess());
+          sessionStorage.clear();
+        })
+        .catch((error) => {
+          dispatch(deleteFailure());
+        })
+    );
   };
 };
 
