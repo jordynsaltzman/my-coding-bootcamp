@@ -4,6 +4,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const Joi = require("@hapi/joi");
+require("../db");
 
 router.post("/register", async (req, res) => {
   //validate the data before making a user
@@ -17,26 +18,44 @@ router.post("/register", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   //make sure user isnt already in the database
-  const emailExists = await User.findOne({ email: req.body.email });
-  if (emailExists) return res.status(400).send("Email already exists");
+  User.find({
+    email: req.body.email,
+  }).then((emails) => {
+    console.log("email");
+    if (emails.length) {
+      return res.status(404).send("Email Already exists");
+      console.log("email eists");
+    } else {
+      const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body,
+      });
+
+      user.save().then((doc) => {
+        console.log(doc);
+        if (!doc || doc.length === 0) {
+          res.status(500).send("Internal server error");
+        }
+        res.send("succcess register");
+      });
+    }
+  });
 
   //hash the password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
+  //const salt = bcrypt.genSalt(10);
+  //const hashedPassword = bcrypt.hash(req.body.password, salt);
+  console.log("hashed");
   //create a new user
-  const user = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: hashedPassword,
-  });
-  try {
-    const savedUser = await user.save();
-    res.send({ user: savedUser._id });
-  } catch (err) {
-    res.status(400).send(err);
-  }
+
+  // res.send("last send");
+  // try {
+  //   const savedUser = await user.save();
+  //   res.send({ user: savedUser });
+  // } catch (err) {
+  //   res.status(400).send(err);
+  // }
 });
 
 router.post("/login", async (req, res) => {
@@ -58,6 +77,7 @@ router.post("/login", async (req, res) => {
 
   //create and assign a token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  console.log(user);
   res.header("auth-token", token).send(token);
 
   res.send("Logged in");

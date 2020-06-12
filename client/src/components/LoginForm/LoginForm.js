@@ -12,6 +12,7 @@ const LoginForm = ({
   emailName,
   emailType,
 }) => {
+  const handleSubmit = () => {};
   return (
     <Row className={styles.formRow}>
       <Col className={styles.formCol}>
@@ -33,7 +34,11 @@ const LoginForm = ({
             onChange={handleChange}
             placeholder="Password"
           />
-          <Button className={styles.loginBtn} type="submit">
+          <Button
+            className={styles.loginBtn}
+            type="submit"
+            onClick={handleSubmit}
+          >
             Login
           </Button>
         </form>
