@@ -8,54 +8,43 @@ require("../db");
 
 router.post("/register", async (req, res) => {
   //validate the data before making a user
+  
   const schema = Joi.object({
     firstName: Joi.string(),
     lastName: Joi.string(),
     email: Joi.string().email(),
     password: Joi.string().min(6),
   });
+
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   //make sure user isnt already in the database
-  User.find({
-    email: req.body.email,
-  }).then((emails) => {
-    console.log("email");
-    if (emails.length) {
-      return res.status(404).send("Email Already exists");
-      console.log("email eists");
-    } else {
-      const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body,
-      });
 
-      user.save().then((doc) => {
-        console.log(doc);
-        if (!doc || doc.length === 0) {
-          res.status(500).send("Internal server error");
-        }
-        res.send("succcess register");
-      });
-    }
-  });
+  const user = await User.find({email: req.body.email})
+  
+
+  if(user.length){
+    return res.status(400).send('Email already exists')
+  }
 
   //hash the password
-  //const salt = bcrypt.genSalt(10);
-  //const hashedPassword = bcrypt.hash(req.body.password, salt);
-  console.log("hashed");
-  //create a new user
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+  
 
-  // res.send("last send");
-  // try {
-  //   const savedUser = await user.save();
-  //   res.send({ user: savedUser });
-  // } catch (err) {
-  //   res.status(400).send(err);
-  // }
+  const userData = new User({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: hashedPassword,
+  });
+
+  let userDoc = await userData.save()
+
+  res.send(userDoc)
+
+  
 });
 
 router.post("/login", async (req, res) => {
