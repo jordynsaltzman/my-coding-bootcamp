@@ -8,6 +8,7 @@ const App = () => {
     <Router>
       <Route exact path="/login" component={LoginWindow} />
       <Route path="/home" component={HomePage} />
+      {/* <Route path="/" component={SuccessPage} /> */}
     </Router>
   );
 };

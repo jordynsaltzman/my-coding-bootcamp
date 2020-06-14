@@ -11,6 +11,7 @@ import axios from "axios";
 
 const LoginWindow = (props) => {
   const [activeView, setActiveView] = useState("1");
+  const [registerSuccess, setRegisterSuccess] = useState(false);
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: "",
     password: "",
@@ -54,6 +55,7 @@ const LoginWindow = (props) => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
+        props.history.push("/home");
       });
 
     // reset local state
@@ -71,7 +73,7 @@ const LoginWindow = (props) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          props.history.push("/");
+          setRegisterSuccess(true);
         }
       });
   };
@@ -116,7 +118,7 @@ const LoginWindow = (props) => {
               emailName="email"
               emailType="email"
             />
-          ) : (
+          ) : !registerSuccess ? (
             <SignupForm
               handleRegister={handleRegister}
               handleChange={handleRegisterChange}
@@ -133,6 +135,14 @@ const LoginWindow = (props) => {
               lastNameType="text"
               lastNameValue={userRegisterInfo.lastName}
             />
+          ) : (
+            <Row className={styles.formRow}>
+              <Col className={styles.formCol}>
+                <h2 className={styles.message}>
+                  You have successfully registered!
+                </h2>
+              </Col>
+            </Row>
           )}
         </Col>
       </Row>
