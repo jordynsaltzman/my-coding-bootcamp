@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -17,6 +18,8 @@ dotenv.config();
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+
 //route middleware
 app.use("/topics", topicRoutes);
 // app.use("/resources", resourceRoutes);

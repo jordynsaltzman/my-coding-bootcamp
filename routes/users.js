@@ -8,7 +8,7 @@ require("../db");
 
 router.post("/register", async (req, res) => {
   //validate the data before making a user
-  
+
   const schema = Joi.object({
     firstName: Joi.string(),
     lastName: Joi.string(),
@@ -21,30 +21,26 @@ router.post("/register", async (req, res) => {
 
   //make sure user isnt already in the database
 
-  const user = await User.find({email: req.body.email})
-  
+  const user = await User.find({ email: req.body.email });
 
-  if(user.length){
-    return res.status(400).send('Email already exists')
+  if (user.length) {
+    return res.status(400).send("Email already exists");
   }
 
   //hash the password
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(req.body.password, salt);
-  
 
   const userData = new User({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          password: hashedPassword,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: hashedPassword,
   });
 
-  let userDoc = await userData.save()
+  let userDoc = await userData.save();
 
-  res.send(userDoc)
-
-  
+  res.send(userDoc);
 });
 
 router.post("/login", async (req, res) => {
@@ -67,9 +63,15 @@ router.post("/login", async (req, res) => {
   //create and assign a token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   console.log(user);
-  res.header("auth-token", token).send(token);
 
-  res.send("Logged in");
+  let userData = {
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    token: token,
+  };
+
+  res.send(userData);
 });
 
 module.exports = router;

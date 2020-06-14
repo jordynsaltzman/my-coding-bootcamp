@@ -12,7 +12,6 @@ const LoginForm = ({
   emailName,
   emailType,
 }) => {
-  const handleSubmit = () => {};
   return (
     <Row className={styles.formRow}>
       <Col className={styles.formCol}>
@@ -37,7 +36,7 @@ const LoginForm = ({
           <Button
             className={styles.loginBtn}
             type="submit"
-            onClick={handleSubmit}
+            onClick={handleLogin}
           >
             Login
           </Button>
