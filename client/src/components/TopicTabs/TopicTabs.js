@@ -31,7 +31,7 @@ const TopicTabs = (props) => {
                 toggle("1");
               }}
             >
-              React
+              Python
             </NavLink>
           </NavItem>
           <NavItem>
@@ -49,9 +49,21 @@ const TopicTabs = (props) => {
           <NavItem>
             <NavLink
               className={activeTab === "3" ? styles.active : styles.inactive}
+              //   className={classnames({ active: activeTab === "2" })}
               active={activeTab === "3"}
               onClick={() => {
                 toggle("3");
+              }}
+            >
+              Docs
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={activeTab === "4" ? styles.active : styles.inactive}
+              active={activeTab === "4"}
+              onClick={() => {
+                toggle("4");
               }}
             >
               + New Topic

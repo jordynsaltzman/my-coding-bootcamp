@@ -14,11 +14,13 @@ Enter _My Coding Bootcamp_, an application where users can create accounts and s
 
 #### Desktop
 
-![Desktop version](./client/src/images/myCodingBootcampScreenshot.png)
+![Desktop version](./client/src/images/mcb1.JPG)
+![Desktop version](./client/src/images/mcb2.JPG)
+![Desktop version](./client/src/images/mcb3.JPG)
 
 #### Mobile
 
-![Mobile version](./client/src/images/myCodingBootcampScreenshotMobile.png)
+![Mobile version](./client/src/images/mcb4.JPG)
 
 ## License
 

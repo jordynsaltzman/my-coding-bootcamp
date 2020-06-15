@@ -8,7 +8,8 @@ const ResourceCard = () => {
       <Card body className={styles.card}>
         <CardTitle className={styles.cardTitle}>Resource Title</CardTitle>
         <CardText>
-          With supporting text below as a natural lead-in to additional content.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+          iaculis iaculis nunc vitae pretium.
         </CardText>
         <Row>
           <Col xs="6" sm="6" md="6" lg="6">
