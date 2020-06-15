@@ -3,10 +3,61 @@
   flex-direction: column;
   /* justify-content: center; */
   padding-top: 70px;
-  background-color: #66c7c569;
+  background-color: rgba(0, 0, 0, 0.863);
   background-image: url("../../images/marvin-meyer-SYTO3xs06fU-unsplash.jpg");
   background-repeat: repeat;
-  background-blend-mode: lighten;
+  background-blend-mode: darken;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.header {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 30px;
+  text-align: center;
+  padding: 5px 20px 0px 20px;
+  font-size: 30px;
+  color: white;
+}
+
+.description {
+  font-family: "Karla", sans-serif;
+  padding: 0px 15px;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(196, 196, 196);
+}
+
+.row {
+  padding: 0px 30px;
+}
+
+.getStartedBtn {
+  font-family: "Karla", sans-serif;
+  width: 25%;
+  margin: 20px 0px;
+  padding: 10px 5px !important;
+  border-radius: 20px !important;
+  border-color: #66c7c5 !important;
+  color: #222 !important;
+  background-color: #66c7c5 !important;
+}
+
+.getStartedBtn:hover {
+  background: transparent !important;
+  color: #66c7c5 !important;
+}
+
+@media only screen and (max-width: 750px) {
+  .getStartedBtn {
+    margin-top: 40px;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .getStartedBtn {
+    margin-top: 40px;
+    width: 80%;
+  }
 }
