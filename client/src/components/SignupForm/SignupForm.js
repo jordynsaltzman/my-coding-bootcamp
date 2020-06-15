@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SignupForm.module.css";
 import { Row, Col, Button } from "reactstrap";
+import { PromiseProvider } from "mongoose";
 
 const SignupForm = ({
   handleChange,
@@ -17,11 +18,15 @@ const SignupForm = ({
   emailName,
   emailType,
   emailValue,
+  registerError,
 }) => {
   return (
     <Row className={styles.formRow}>
       <Col className={styles.formCol}>
         <h2 className={styles.message}>Get started</h2>
+        <p className={styles.errorMsg} style={{ display: registerError }}>
+          Please check your information and try again.
+        </p>
         <form className={styles.form}>
           <input
             className={styles.input}
@@ -54,7 +59,7 @@ const SignupForm = ({
             name={pwName}
             value={pwValue}
             onChange={handleChange}
-            placeholder="Password"
+            placeholder="Password (6 characters minimum)"
           />
           <Button className={styles.loginBtn} onClick={handleRegister}>
             Sign Up

@@ -59,6 +59,13 @@
   border-color: rgb(255, 0, 70);
 }
 
+.errorMsg {
+  color: rgb(255, 0, 70);
+  font-family: "Karla", sans-serif;
+  padding: 0px 15px;
+  text-align: center;
+}
+
 @media only screen and (max-height: 557px) {
   .input {
     padding: 5px 20px;

@@ -12,6 +12,7 @@ import axios from "axios";
 const LoginWindow = (props) => {
   const [activeView, setActiveView] = useState("1");
   const [registerSuccess, setRegisterSuccess] = useState(false);
+  const [registerError, setRegisterError] = useState("none");
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: "",
     password: "",
@@ -75,6 +76,10 @@ const LoginWindow = (props) => {
         if (response.status === 200) {
           setRegisterSuccess(true);
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        setRegisterError("block");
       });
   };
 
@@ -134,6 +139,7 @@ const LoginWindow = (props) => {
               lastNameName="lastName"
               lastNameType="text"
               lastNameValue={userRegisterInfo.lastName}
+              registerError={registerError}
             />
           ) : (
             <Row className={styles.formRow}>
