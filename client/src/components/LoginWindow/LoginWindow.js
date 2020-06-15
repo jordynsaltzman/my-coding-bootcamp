@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { userLogin, userLogout } from "../../actions/userActions";
 import { connect } from "react-redux";
 import styles from "./LoginWindow.module.css";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
 import Navbar from "../Navbar/Navbar";
@@ -13,6 +13,7 @@ const LoginWindow = (props) => {
   const [activeView, setActiveView] = useState("1");
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const [registerError, setRegisterError] = useState("none");
+  const [loginError, setLoginError] = useState("none");
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: "",
     password: "",
@@ -29,7 +30,6 @@ const LoginWindow = (props) => {
     if (activeView !== id) {
       setActiveView(id);
     }
-    console.log(activeView);
   };
 
   const handleChange = (e) => {
@@ -57,6 +57,10 @@ const LoginWindow = (props) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
         props.history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginError("block");
       });
 
     // reset local state
@@ -116,6 +120,7 @@ const LoginWindow = (props) => {
             <LoginForm
               handleLogin={handleLogin}
               handleChange={handleChange}
+              loginError={loginError}
               pwValue={userLoginInfo.password}
               pwName="password"
               pwType="password"
