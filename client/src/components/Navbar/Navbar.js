@@ -6,8 +6,24 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <Row className={styles.nav}>
-      <Col>
-        <img className={styles.logo} src={logo} alt="logo" />
+      <Col
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <a href="/login">
+          {/* if user is logged in, redirect to homepage */}
+          <img className={styles.logo} src={logo} alt="logo" />
+        </a>
+
+        <p className={styles.navLink}>
+          <a href="/about" className={styles.navLink}>
+            How It Works
+          </a>
+        </p>
       </Col>
     </Row>
   );
