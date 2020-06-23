@@ -22,7 +22,7 @@ app.use(cors());
 
 //route middleware
 app.use("/topics", topicRoutes);
-// app.use("/resources", resourceRoutes);
+app.use("/resources", resourceRoutes);
 app.use(userRoutes);
 
 router.get("/", (req, res) => {

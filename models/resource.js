@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const resourceSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   title: {
     type: String,
     required: true,
@@ -20,13 +19,9 @@ const resourceSchema = new Schema({
     type: String,
     required: true,
   },
-  subjuect: {
-    type: String,
-    required: true,
-  },
-  user: {
+  topic: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Topic",
   },
 });
 

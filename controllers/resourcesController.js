@@ -1,57 +1,61 @@
 const Resource = require("../models/resource");
+const Topic = require("../models/topic");
 
 module.exports = {
   findAllResources: (req, res) => {
-    Resource.find({ user: req.params.userId })
-      .then((items) =>
-        res.status(200).json({
-          resources: items.map((item) => {
-            return {
-              _id: item._id,
-              title: item.title,
-              description: item.description,
-              url: item.url,
-              subject: item.subject,
-              completed: item.completed,
-            };
-          }),
-        })
-      )
-      .catch((err) => res.status(422).json(err));
+    Resource.find({ topic: req.params.id }).then((doc) => {
+      res.send(doc);
+    });
   },
 
   createNewResource: (req, res) => {
+    let resource = new Resource();
+
     let newResource = {
-      _id: req.body._id,
       title: req.body.title,
       description: req.body.description,
       url: req.body.url,
-      subject: req.body.subject,
+      topic: req.body.topic,
       completed: req.body.completed,
-      userId: req.params.userId,
     };
+
+    const { title, description, url, topic, completed } = req.body;
+
+    resource["title"] = title;
+    resource["description"] = description;
+    resource["url"] = url;
+    resource["completed"] = completed;
+    resource["topic"] = topic;
+
+    resource.save().then((doc) => {
+      Topic.findOne({ _id: topic }).then((topic) => {
+        topic.resources.push(doc);
+        topic.save();
+      });
+    });
 
     Resource.create(newResource)
       .then((result) => res.status(200).json(result))
       .catch((err) => res.status(422).json(err));
   },
 
-  // findById: (req, res) => {
-  //   db.Resource.findById(req.params.query)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  findResourceById: (req, res) => {
+    Resource.findOne({ _id: req.params.id });
+  },
 
-  //   update: (req, res) => {
-  //     Resource.findOneAndUpdate({ _id: req.params.id }, req.body)
-  //       .then((dbModel) => res.json(dbModel))
-  //       .catch((err) => res.status(422).json(err));
-  //   },
+  updateResource: (req, res) => {
+    Resource.findOneAndUpdate(
+      { _id: req.body.id },
+      { completed: req.body.completed }
+    ).then((doc) => res.send(doc));
+  },
 
-  //   remove: function (req, res) {
-  //     Resource.findById({ _id: req.params.id })
-  //       .then((dbModel) => dbModel.remove())
-  //       .then((dbModel) => res.json(dbModel))
-  //       .catch((err) => res.status(422).json(err));
-  //   },
+  removeResource: function (req, res) {
+    Resource.findOneAndDelete({ _id: req.body.resource }).then((doc) =>
+      Topic.findOne({ _id: req.body.topic }).then((res) => {
+        res.resources.filter((item) => item._id !== doc._id);
+        res.save();
+      })
+    );
+  },
 };

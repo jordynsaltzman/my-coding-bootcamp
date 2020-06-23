@@ -3,7 +3,7 @@ import logo from "../../images/myCodingBootcampLogo.png";
 import { Row, Col } from "reactstrap";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ loggedIn }) => {
   return (
     <Row className={styles.nav}>
       <Col
@@ -14,7 +14,7 @@ const Navbar = () => {
           alignItems: "center",
         }}
       >
-        <a href="/login">
+        <a href={loggedIn}>
           {/* if user is logged in, redirect to homepage */}
           <img className={styles.logo} src={logo} alt="logo" />
         </a>
