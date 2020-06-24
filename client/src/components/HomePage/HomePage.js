@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HomePage.module.css";
 import { Row, Col, Container, Button } from "reactstrap";
 import Navbar from "../Navbar/Navbar";

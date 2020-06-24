@@ -15,8 +15,8 @@ module.exports = {
       topic.save().then((doc) => {
         res.send(doc);
       });
-    } catch (x) {
-      console.log("there was an error above");
+    } catch (err) {
+      console.log(err);
     }
   },
 

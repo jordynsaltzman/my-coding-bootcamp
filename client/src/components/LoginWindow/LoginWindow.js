@@ -8,6 +8,7 @@ import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
+import API from "../../api/API";
 
 const LoginWindow = (props) => {
   const [activeView, setActiveView] = useState("1");

@@ -51,11 +51,17 @@ module.exports = {
   },
 
   removeResource: function (req, res) {
-    Resource.findOneAndDelete({ _id: req.body.resource }).then((doc) =>
+    Resource.findByIdAndRemove({ _id: req.body.resource }).then((doc) =>
       Topic.findOne({ _id: req.body.topic }).then((res) => {
+        console.log(res);
         res.resources.filter((item) => item._id !== doc._id);
         res.save();
       })
     );
   },
 };
+
+// {
+//   "resource": "5ef266589a6d50439471f794",
+//   "topic": "5ef25a7b75255855680e0fd8"
+// }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TabContent,
   TabPane,
@@ -7,86 +7,100 @@ import {
   NavLink,
   Row,
   Col,
+  Button,
 } from "reactstrap";
 import ResourceCard from "../ResourceCard/ResourceCard";
 import styles from "./TopicTabs.module.css";
+import API from "../../api/API";
+import TopicForm from "../TopicForm/TopicForm";
 
-const TopicTabs = (props) => {
-  const [activeTab, setActiveTab] = useState("1");
+const TopicTabs = () => {
+  const [activeTab, setActiveTab] = useState("0");
+  let [userTopics, setUserTopics] = useState([]);
+
+  useEffect(() => {
+    API.getUserTopics().then((res) => {
+      console.log(res.data);
+      for (let i = 0; i < res.data.length; i++) {
+        setUserTopics((userTopics) => [...userTopics, res.data[i]]);
+      }
+    });
+  }, []);
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
+  };
+
+  const handleDelete = (id) => {
+    API.deleteTopic(id).then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   };
 
   return (
     <Row>
       <Col>
         <Nav tabs className={styles.tabs}>
+          {userTopics.map((topic, i) => {
+            return (
+              <NavItem key={i}>
+                <NavLink
+                  className={activeTab === i ? styles.active : styles.inactive}
+                  active={activeTab === i}
+                  onClick={() => {
+                    toggle(i);
+                  }}
+                >
+                  {topic.topicName}
+                </NavLink>
+              </NavItem>
+            );
+          })}
+
           <NavItem>
             <NavLink
-              className={activeTab === "1" ? styles.active : styles.inactive}
-              //   className={classnames({ active: activeTab === "1" })}
-              active={activeTab === "1"}
+              className={activeTab === "100" ? styles.active : styles.inactive}
+              active={activeTab === "100"}
               onClick={() => {
-                toggle("1");
-              }}
-            >
-              Python
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === "2" ? styles.active : styles.inactive}
-              //   className={classnames({ active: activeTab === "2" })}
-              active={activeTab === "2"}
-              onClick={() => {
-                toggle("2");
-              }}
-            >
-              Redux
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === "3" ? styles.active : styles.inactive}
-              //   className={classnames({ active: activeTab === "2" })}
-              active={activeTab === "3"}
-              onClick={() => {
-                toggle("3");
-              }}
-            >
-              Docs
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === "4" ? styles.active : styles.inactive}
-              active={activeTab === "4"}
-              onClick={() => {
-                toggle("4");
+                toggle("100");
               }}
             >
               + New Topic
             </NavLink>
           </NavItem>
         </Nav>
+
         <TabContent activeTab={activeTab}>
-          <TabPane tabId="1">
-            <Row>
-              <ResourceCard />
-              <ResourceCard />
-              <ResourceCard />
-              <ResourceCard />
-            </Row>
-          </TabPane>
-          <TabPane tabId="2">
-            <Row>
-              <ResourceCard />
-              <ResourceCard />
-              <ResourceCard />
-            </Row>
+          <TabPane tabId="100">
+            <TopicForm />
           </TabPane>
         </TabContent>
+
+        {userTopics.map((topic, i) => {
+          return (
+            <TabContent activeTab={activeTab} key={i}>
+              <TabPane tabId={i}>
+                <Row>
+                  <Col>
+                    <Button
+                      onClick={() => {
+                        handleDelete(topic._id);
+                      }}
+                    >
+                      Delete Topic
+                    </Button>
+                  </Col>
+                </Row>
+                <Row>
+                  {topic.resources.map((resource, i) => {
+                    return <ResourceCard />;
+                  })}
+                </Row>
+              </TabPane>
+            </TabContent>
+          );
+        })}
       </Col>
     </Row>
   );
