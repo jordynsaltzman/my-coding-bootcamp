@@ -10,16 +10,16 @@ import {
 } from "reactstrap";
 import API from "../../api/API";
 
-const TopicForm = () => {
+const TopicForm = ({ handleCreate }) => {
   const [topic, setTopic] = useState({
     topicName: "",
   });
 
   const createTopic = (event) => {
     event.preventDefault();
-    API.createNewTopic(topic).then((res) => {
-      console.log(res.data);
-      window.location.reload();
+    handleCreate(topic);
+    setTopic({
+      topicName: "",
     });
   };
 

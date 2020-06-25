@@ -52,10 +52,22 @@ module.exports = {
 
   removeResource: function (req, res) {
     Resource.findByIdAndRemove({ _id: req.body.resource }).then((doc) =>
-      Topic.findOne({ _id: req.body.topic }).then((res) => {
-        console.log(res);
-        res.resources.filter((item) => item._id !== doc._id);
-        res.save();
+      Topic.findOne({ _id: req.body.topic }).then((topic) => {
+        let newResources = [];
+        topic.resources.forEach((resource, i) => {
+          console.log(i, resource["_id"], doc["_id"]);
+          if (resource["_id"] !== doc["_id"]) {
+            newResources.push(resource);
+          }
+        });
+        topic.resources = newResources;
+        res.send({
+          newResources,
+        });
+        // topic.markModified("resources");
+        // topic.save().then((doc) => {
+        //   res.send(doc);
+        // });
       })
     );
   },
