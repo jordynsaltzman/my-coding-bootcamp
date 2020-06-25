@@ -2,26 +2,29 @@ import React, { useEffect, useState } from "react";
 import styles from "./HomePage.module.css";
 import { Row, Col, Container, Button } from "reactstrap";
 import Navbar from "../Navbar/Navbar";
-import TopicForm from "../TopicForm/TopicForm";
+import ResourceForm from "../ResourceForm/ResourceForm";
 import TopicTabs from "../TopicTabs/TopicTabs";
 
 const HomePage = () => {
-  //if the user has not yet created a subject, show TopicForm component
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   return (
     <Container className={styles.container} fluid={true}>
       <Navbar />
-      {/* <TopicForm /> */}
       <Row>
-        <Col sm="12" md="4" lg="4" className={styles.btnCol}>
-          <Button className={styles.addBtn}>Add New Resource</Button>
+        <Col sm="12" md="3" lg="3" className={styles.btnCol}>
+          <Button className={styles.addBtn} onClick={toggle}>
+            Add New Resource
+          </Button>
           <Button className={styles.addBtn}>Create New Topic </Button>
           <Button className={styles.addBtn}>View My Progress </Button>
         </Col>
-        <Col sm="12" md="8" lg="8">
+        <Col sm="12" md="9" lg="9">
           <TopicTabs />
         </Col>
       </Row>
+      <ResourceForm toggle={toggle} modalOpen={modal} />
     </Container>
   );
 };

@@ -32,6 +32,7 @@ const TopicTabs = () => {
   };
 
   const handleDelete = (id) => {
+    //show modal that asks if user is sure they want to delete the topic
     API.deleteTopic(id).then((res) => {
       console.log(res);
       window.location.reload();
@@ -87,14 +88,22 @@ const TopicTabs = () => {
                       onClick={() => {
                         handleDelete(topic._id);
                       }}
+                      className={styles.deleteBtn}
                     >
                       Delete Topic
                     </Button>
                   </Col>
                 </Row>
                 <Row>
-                  {topic.resources.map((resource, i) => {
-                    return <ResourceCard />;
+                  {topic.resources.map((resource, x) => {
+                    return (
+                      <ResourceCard
+                        title={resource.title}
+                        description={resource.description}
+                        link={resource.url}
+                        key={x}
+                      />
+                    );
                   })}
                 </Row>
               </TabPane>

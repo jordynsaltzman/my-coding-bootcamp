@@ -2,13 +2,13 @@
 
 Create topics of interest, save online resources, keep track of progress, learn to code!
 
-Built using the MERN stack (MongoDB, Express.js, React, and Node.js). I will also implement user login with password encryption and JSON Web Token authentication. Stay tuned!
+Built using the MERN stack (MongoDB, Express.js, React, and Node.js). I implemented user authentication with JSON Web Token and password encryption using bcrypt.
 
 ## Description
 
-With an abundance of coding resources online, from YouTube videos to documentation to Stack Overflow threads, it can be difficult to keep track of which ones you have already watched or read. As a new developer, I am constantly saving resources to the Bookmarks bar, but this is not the best solution for me. When I am on a different PC or mobile device, for example, I cannot browse through my bookmarked online resources. Even from my own machine, I cannot keep track of which ones I have already used, and it is not very visually engaging.
+Developers would likely be lost without the abundance of coding resources found online, such as documentation, Youtube videos, and Stack Overflow threads. I constantly find myself saving online resources to the Bookmarks bar, but when I switch browsers or devices, I often cannot access my Bookmarks. I wanted my favorite resources to be easily accessible from any machine and browser.
 
-Enter _My Coding Bootcamp_, an application where users can create accounts and save/group their favorite online coding resources into topics of their choice. Users can log in at any time to practice, and after utilizing one of their saved resources, they can mark it as complete in order to keep track of their progress.
+_My Coding Bootcamp_ is an application where users can save and organize their favorite online coding resources into topics of their choice. After utilizing one of their saved resources, they have the option to mark it complete in order to keep track of their progress. Users can also easily remove topics and resources from their account.
 
 ## Screenshots
 
@@ -20,7 +20,7 @@ Enter _My Coding Bootcamp_, an application where users can create accounts and s
 
 #### Mobile
 
-![Mobile version](./client/src/images/mcb4.JPG)
+<img src="./client/src/images/mcb4.JPG" width="250px" alt="Mobile Screenshot"/>
 
 ## License
 

@@ -33,7 +33,7 @@ const TopicForm = () => {
       <Col className={styles.formBox} sm="12" md={{ size: 8, offset: 2 }}>
         <form className={styles.form}>
           <label style={{ textAlign: "center" }}>
-            <h3 className={styles.title}>Enter a topic to start learning.</h3>
+            <h3 className={styles.title}>What would you like to learn?</h3>
           </label>
           <InputGroup className={styles.inputGroup}>
             <Input
@@ -42,8 +42,15 @@ const TopicForm = () => {
               placeholder="E.g. Redux, Python, Algorithms..."
             />
             <InputGroupAddon addonType="append" classname={styles.button}>
-              <Button classname={styles.button} onClick={createTopic}>
-                Create
+              <Button
+                classname={styles.button}
+                onClick={createTopic}
+                style={{
+                  backgroundColor: "rgb(255, 0, 70)",
+                  borderColor: "rgb(255, 0, 70)",
+                }}
+              >
+                <i className="fa fa-plus" aria-hidden="true"></i>
               </Button>
             </InputGroupAddon>
           </InputGroup>

@@ -13,23 +13,22 @@
 
 .addBtn {
   font-family: "Karla", sans-serif;
-
   width: 60%;
-
-  margin: 15px;
-  font-size: 18px !important;
+  margin: 20px 15px;
+  font-size: 16px !important;
   padding: 10px 5px !important;
   border-radius: 20px !important;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.37) !important;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.582) !important;
   border-color: #66c7c5 !important;
   color: white !important;
   background-color: #66c7c5 !important;
-  transition: all ease-out 0.5s !important;
+  transition: all ease-out 0.4s !important;
 }
 
 .addBtn:hover {
-  background-color: rgb(255, 0, 70) !important;
-  border-color: rgb(255, 0, 70) !important;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.582) !important;
+  /* background-color: rgb(255, 0, 70) !important;
+  border-color: rgb(255, 0, 70) !important; */
   color: white !important;
 }
 

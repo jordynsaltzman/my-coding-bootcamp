@@ -35,14 +35,6 @@ export default {
     return axios.get("/topics/" + id);
   },
 
-  login: (userData) => {
-    return axios.post("/login", userData);
-  },
-
-  register: (userData) => {
-    return axios.post("/register", userData);
-  },
-
   getResources: (topicId) => {
     return axios.get("/resources/" + topicId);
   },

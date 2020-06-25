@@ -31,6 +31,7 @@
 .input {
   font-family: "Karla", sans-serif !important;
   color: #222;
+  border-color: rgb(255, 0, 70) !important;
   background: transparent !important;
   transition: background-color ease-in-out 0.5s !important;
 }
@@ -43,12 +44,14 @@
   border-color: rgb(255, 0, 70) !important;
 }
 
-.button {
-  font-family: "Karla", sans-serif !important;
-}
-
 @media only screen and (min-width: 470px) {
   form {
     padding: 0px 30px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .title {
+    font-size: 25px;
   }
 }
