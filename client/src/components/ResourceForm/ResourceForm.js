@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ResourceForm.module.css";
 import {
-  Row,
-  Col,
   Button,
-  InputGroup,
+  Form,
+  FormGroup,
+  Label,
   Input,
-  InputGroupAddon,
+  FormText,
   Modal,
   ModalHeader,
   ModalBody,
@@ -15,6 +15,7 @@ import {
 import API from "../../api/API";
 
 const ResourceForm = ({ toggle, modalOpen }) => {
+  const [topicList, setTopicList] = useState([]);
   const [resource, setResource] = useState({
     title: "",
     description: "",
@@ -27,43 +28,69 @@ const ResourceForm = ({ toggle, modalOpen }) => {
     event.preventDefault();
     API.createNewResource(resource).then((res) => {
       console.log(res.data);
-      //   window.location.reload();
     });
   };
 
+  useEffect(() => {
+    API.getUserTopics().then((res) => {
+      console.log(res.data);
+      setTopicList(res.data);
+    });
+  }, []);
+
   return (
-    <Modal isOpen={modalOpen} toggle={toggle} backdrop="static">
+    <Modal isOpen={modalOpen} toggle={toggle} backdrop="static" centered="true">
       <ModalHeader toggle={toggle}>
         <h2 className={styles.title}>New Resource</h2>
       </ModalHeader>
-      <ModalBody>
-        <form>
-          <label></label>
-        </form>
-      </ModalBody>
-      <ModalFooter>
-        <Button
-          style={{
-            backgroundColor: "rgb(255, 0, 70)",
-            borderColor: "rgb(255, 0, 70)",
-            fontFamily: "'Karla', sans-serif",
-            boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.5)",
-          }}
-          onClick={createResource}
-        >
-          Add
-        </Button>
-        <Button
-          color="secondary"
-          onClick={toggle}
-          style={{
-            fontFamily: "'Karla', sans-serif",
-            boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          Cancel
-        </Button>
-      </ModalFooter>
+      <Form style={{ fontFamily: "'Karla', sans-serif" }}>
+        <ModalBody>
+          <FormGroup>
+            <Label htmlFor="title">Title*</Label>
+            <Input type="text" name="title" id="title" required="true" />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="description">Description</Label>
+            <Input type="text" name="description" id="description" />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="url">URL*</Label>
+            <Input type="text" name="url" id="url" required="true" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="topic">Topic*</Label>
+            <Input type="select" name="topic" id="topic" required="true">
+              {topicList.map((topic, i) => {
+                return <option key={i}>{topic.topicName}</option>;
+              })}
+            </Input>
+            <FormText color="muted">* indicates required field</FormText>
+          </FormGroup>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            style={{
+              backgroundColor: "rgb(255, 0, 70)",
+              borderColor: "rgb(255, 0, 70)",
+              fontFamily: "'Karla', sans-serif",
+              boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.5)",
+            }}
+            onClick={createResource}
+          >
+            Add
+          </Button>
+          <Button
+            color="secondary"
+            onClick={toggle}
+            style={{
+              fontFamily: "'Karla', sans-serif",
+              boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Form>
     </Modal>
   );
 };

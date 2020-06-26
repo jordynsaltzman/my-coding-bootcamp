@@ -8,7 +8,6 @@ const resourceSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   completed: {
     type: Boolean,

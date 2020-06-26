@@ -48,6 +48,7 @@ const TopicTabs = () => {
       console.log(res.data);
 
       setUserTopics(res.data);
+      setActiveTab(0);
     });
   }, []);
 
@@ -142,13 +143,25 @@ const TopicTabs = () => {
                   </Row>
                 </TabPane>
               </TabContent>
-              <Modal isOpen={modal.value} toggle={closeModal}>
+              <Modal
+                centered="true"
+                isOpen={modal.value}
+                toggle={closeModal}
+                backdrop="static"
+              >
                 <ModalHeader toggle={closeModal}>
-                  <h2 className={styles.title}>Are you sure?</h2>
+                  <h2
+                    style={{
+                      fontFamily: "'Roboto Condensed', sans serif",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Are you sure?
+                  </h2>
                 </ModalHeader>
-                <ModalBody>
-                  Deleting {modal.message} will remove all resources within the
-                  topic.
+                <ModalBody style={{ fontFamily: "'Karla', sans serif" }}>
+                  Deleting {modal.message} will remove all resources contained
+                  within the topic.
                 </ModalBody>
                 <ModalFooter>
                   <Button
