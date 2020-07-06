@@ -2,33 +2,21 @@ import axios from "axios";
 
 export default {
   getUserTopics: () => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    return axios.get("http://localhost:5000/topics/own", config);
+    // const token = localStorage.getItem("token");
+    // const config = {
+    //   headers: {
+    //     authorization: `Bearer ${token}`,
+    //   },
+    // };
+    return axios.get("http://localhost:5000/topics/own");
   },
 
   createNewTopic: (topic) => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    return axios.post("http://localhost:5000/topics/new", topic, config);
+    return axios.post("http://localhost:5000/topics/new", topic);
   },
 
   deleteTopic: (id) => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    return axios.delete("http://localhost:5000/topics/delete/" + id, config);
+    return axios.delete("http://localhost:5000/topics/delete/" + id);
   },
 
   getOneTopic: (id) => {
@@ -44,7 +32,7 @@ export default {
   },
 
   createNewResource: (newResource) => {
-    return axios.post("/resources/new", newResource);
+    return axios.post("http://localhost:5000/resources/new", newResource);
   },
 
   updateResource: (data) => {
@@ -52,6 +40,13 @@ export default {
   },
 
   deleteResource: (resource) => {
-    return axios.delete("/resources/delete", resource);
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+      data: resource,
+    };
+    return axios.delete("http://localhost:5000/resources/delete", config);
   },
 };

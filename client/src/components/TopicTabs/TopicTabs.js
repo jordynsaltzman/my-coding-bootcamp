@@ -17,8 +17,9 @@ import ResourceCard from "../ResourceCard/ResourceCard";
 import styles from "./TopicTabs.module.css";
 import API from "../../api/API";
 import TopicForm from "../TopicForm/TopicForm";
+import ResourceForm from "../ResourceForm/ResourceForm";
 
-const TopicTabs = () => {
+const TopicTabs = ({ toggleModal, modalOpen }) => {
   const [activeTab, setActiveTab] = useState("0");
   let [userTopics, setUserTopics] = useState([]);
   const [modal, setModal] = useState({
@@ -67,6 +68,26 @@ const TopicTabs = () => {
     });
   };
 
+  const handleDeleteResource = async (resource, topic) => {
+    const data = {
+      topic,
+      resource,
+    };
+
+    let response = await API.deleteResource(data);
+    if (response) {
+      API.getUserTopics().then((response) => {
+        setUserTopics(response.data);
+      });
+    }
+  };
+
+  const getTopics = () => {
+    API.getUserTopics().then((response) => {
+      setUserTopics(response.data);
+    });
+  };
+
   const handleCreate = (topic) => {
     API.createNewTopic(topic).then((res) => {
       API.getUserTopics().then((res) => {
@@ -77,6 +98,12 @@ const TopicTabs = () => {
 
   return (
     <Row>
+      <ResourceForm
+        toggle={toggleModal}
+        modalOpen={modalOpen}
+        topics={userTopics}
+        getTopics={getTopics}
+      />
       <Col>
         <Nav tabs className={styles.tabs}>
           {userTopics.map((topic, i) => {
@@ -137,6 +164,9 @@ const TopicTabs = () => {
                           description={resource.description}
                           link={resource.url}
                           key={x}
+                          topic={topic._id}
+                          resource={resource._id}
+                          handleDeleteResource={handleDeleteResource}
                         />
                       );
                     })}

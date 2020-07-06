@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./ResourceCard.module.css";
 import { Button, Col, Row, Card, CardTitle, CardText } from "reactstrap";
 
-const ResourceCard = ({ title, description, link }) => {
+const ResourceCard = ({
+  title,
+  description,
+  link,
+  topic,
+  resource,
+  handleDeleteResource,
+}) => {
   const goToResource = () => {
     window.open(link);
   };
@@ -20,8 +27,9 @@ const ResourceCard = ({ title, description, link }) => {
                 backgroundColor: "rgb(255, 0, 70)",
                 borderColor: "rgb(255, 0, 70)",
               }}
+              onClick={() => handleDeleteResource(resource, topic)}
             >
-              <i class="fas fa-trash-alt"> </i>
+              <i className="fas fa-trash-alt"> </i>
             </Button>
           </Col>
           <Col xs="9" sm="9" md="9" lg="9">

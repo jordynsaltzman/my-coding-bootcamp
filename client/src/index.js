@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import userReducer from "./reducers/userReducer";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 // save redux state to session storage
 const saveToSessionStorage = (state) => {
@@ -43,6 +44,9 @@ const store = createStore(
 
 // pass current state to session storage
 store.subscribe(() => saveToSessionStorage(store.getState()));
+
+const token = localStorage.getItem("token");
+axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
 
 ReactDOM.render(
   <Provider store={store}>

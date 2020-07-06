@@ -56,18 +56,16 @@ module.exports = {
         let newResources = [];
         topic.resources.forEach((resource, i) => {
           console.log(i, resource["_id"], doc["_id"]);
-          if (resource["_id"] !== doc["_id"]) {
+          if (req.body.resource != resource._id) {
             newResources.push(resource);
           }
         });
+
         topic.resources = newResources;
-        res.send({
-          newResources,
+        topic.markModified("resources");
+        topic.save().then((doc) => {
+          res.send(doc);
         });
-        // topic.markModified("resources");
-        // topic.save().then((doc) => {
-        //   res.send(doc);
-        // });
       })
     );
   },

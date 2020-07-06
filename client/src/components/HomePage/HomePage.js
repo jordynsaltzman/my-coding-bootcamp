@@ -21,10 +21,10 @@ const HomePage = () => {
           <Button className={styles.addBtn}>View My Progress </Button>
         </Col>
         <Col sm="12" md="9" lg="9">
-          <TopicTabs />
+          <TopicTabs toggleModal={toggle} modalOpen={modal} />
         </Col>
       </Row>
-      <ResourceForm toggle={toggle} modalOpen={modal} />
+      {/* <ResourceForm toggle={toggle} modalOpen={modal} /> */}
     </Container>
   );
 };

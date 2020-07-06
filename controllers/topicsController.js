@@ -1,4 +1,5 @@
 const Topic = require("../models/topic");
+const Resource = require("../models/resource");
 
 module.exports = {
   createNewTopic: (req, res) => {

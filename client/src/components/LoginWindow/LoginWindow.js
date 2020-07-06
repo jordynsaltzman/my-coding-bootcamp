@@ -57,6 +57,9 @@ const LoginWindow = (props) => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
+        axios.defaults.headers.common[
+          "authorization"
+        ] = `Bearer ${response.data.token}`;
         props.history.push("/home");
       })
       .catch((error) => {

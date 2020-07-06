@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import API from "../../api/API";
 
-const ResourceForm = ({ toggle, modalOpen }) => {
+const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
   const [topicList, setTopicList] = useState([]);
   const [resource, setResource] = useState({
     title: "",
@@ -24,10 +24,16 @@ const ResourceForm = ({ toggle, modalOpen }) => {
     topic: "",
   });
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setResource({ ...resource, [name]: value });
+  };
+
   const createResource = (event) => {
     event.preventDefault();
+    toggle();
     API.createNewResource(resource).then((res) => {
-      console.log(res.data);
+      getTopics();
     });
   };
 
@@ -47,21 +53,52 @@ const ResourceForm = ({ toggle, modalOpen }) => {
         <ModalBody>
           <FormGroup>
             <Label htmlFor="title">Title*</Label>
-            <Input type="text" name="title" id="title" required="true" />
+            <Input
+              type="text"
+              name="title"
+              id="title"
+              required="true"
+              value={resource.title}
+              onChange={handleChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="description">Description</Label>
-            <Input type="text" name="description" id="description" />
+            <Input
+              type="text"
+              name="description"
+              id="description"
+              value={resource.description}
+              onChange={handleChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label htmlFor="url">URL*</Label>
-            <Input type="text" name="url" id="url" required="true" />
+            <Input
+              type="text"
+              name="url"
+              id="url"
+              required="true"
+              value={resource.url}
+              onChange={handleChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label for="topic">Topic*</Label>
-            <Input type="select" name="topic" id="topic" required="true">
-              {topicList.map((topic, i) => {
-                return <option key={i}>{topic.topicName}</option>;
+            <Input
+              type="select"
+              name="topic"
+              id="topic"
+              required="true"
+              value={resource.topic}
+              onChange={handleChange}
+            >
+              {topics.map((topic, i) => {
+                return (
+                  <option key={i} value={topic._id}>
+                    {topic.topicName}
+                  </option>
+                );
               })}
             </Input>
             <FormText color="muted">* indicates required field</FormText>
