@@ -2,12 +2,6 @@ import axios from "axios";
 
 export default {
   getUserTopics: () => {
-    // const token = localStorage.getItem("token");
-    // const config = {
-    //   headers: {
-    //     authorization: `Bearer ${token}`,
-    //   },
-    // };
     return axios.get("http://localhost:5000/topics/own");
   },
 

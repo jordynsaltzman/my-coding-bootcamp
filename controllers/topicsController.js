@@ -3,13 +3,10 @@ const Resource = require("../models/resource");
 
 module.exports = {
   createNewTopic: (req, res) => {
-    // let newTopic = {
-    //   topicName: req.body.topicName,
-    // };
     try {
       let topic = new Topic();
       console.log(topic);
-      //Topic.create(newTopic);
+
       topic["topicName"] = req.body.topicName;
       topic["user"] = req.user._id;
 

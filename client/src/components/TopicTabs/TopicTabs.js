@@ -163,6 +163,7 @@ const TopicTabs = ({ toggleModal, modalOpen }) => {
                           title={resource.title}
                           description={resource.description}
                           link={resource.url}
+                          type={resource.type}
                           key={x}
                           topic={topic._id}
                           resource={resource._id}

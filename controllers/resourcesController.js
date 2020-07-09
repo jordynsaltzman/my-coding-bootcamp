@@ -16,14 +16,16 @@ module.exports = {
       description: req.body.description,
       url: req.body.url,
       topic: req.body.topic,
+      type: req.body.type,
       completed: req.body.completed,
     };
 
-    const { title, description, url, topic, completed } = req.body;
+    const { title, description, url, type, topic, completed } = req.body;
 
     resource["title"] = title;
     resource["description"] = description;
     resource["url"] = url;
+    resource["type"] = type;
     resource["completed"] = completed;
     resource["topic"] = topic;
 

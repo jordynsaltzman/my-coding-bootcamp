@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./TopicForm.module.css";
 import {
   Row,
@@ -8,7 +8,6 @@ import {
   Input,
   InputGroupAddon,
 } from "reactstrap";
-import API from "../../api/API";
 
 const TopicForm = ({ handleCreate }) => {
   const [topic, setTopic] = useState({
@@ -18,9 +17,7 @@ const TopicForm = ({ handleCreate }) => {
   const createTopic = (event) => {
     event.preventDefault();
     handleCreate(topic);
-    setTopic({
-      topicName: "",
-    });
+    setTopic({ topicName: "" });
   };
 
   const handleInputChange = (event) => {
@@ -38,6 +35,7 @@ const TopicForm = ({ handleCreate }) => {
           <InputGroup className={styles.inputGroup}>
             <Input
               className={styles.input}
+              value={topic.topicName}
               onChange={handleInputChange}
               placeholder="E.g. Redux, Python, Algorithms..."
             />
@@ -49,6 +47,7 @@ const TopicForm = ({ handleCreate }) => {
                   backgroundColor: "rgb(255, 0, 70)",
                   borderColor: "rgb(255, 0, 70)",
                 }}
+                type="submit"
               >
                 <i className="fa fa-plus" aria-hidden="true"></i>
               </Button>

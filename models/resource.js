@@ -18,6 +18,9 @@ const resourceSchema = new Schema({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+  },
   topic: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Topic",

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ResourceForm.module.css";
 import {
   Button,
+  Col,
   Form,
   FormGroup,
   Label,
@@ -20,6 +21,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
     title: "",
     description: "",
     url: "",
+    type: "",
     completed: false,
     topic: "",
   });
@@ -34,6 +36,14 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
     toggle();
     API.createNewResource(resource).then((res) => {
       getTopics();
+      setResource({
+        title: "",
+        description: "",
+        url: "",
+        type: "",
+        completed: false,
+        topic: "",
+      });
     });
   };
 
@@ -45,63 +55,112 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
   }, []);
 
   return (
-    <Modal isOpen={modalOpen} toggle={toggle} backdrop="static" centered="true">
+    <Modal isOpen={modalOpen} toggle={toggle} backdrop="static" centered={true}>
       <ModalHeader toggle={toggle}>
         <h2 className={styles.title}>New Resource</h2>
       </ModalHeader>
-      <Form style={{ fontFamily: "'Karla', sans-serif" }}>
+      <Form style={{ fontFamily: "'Karla', sans-serif", fontSize: "16px" }}>
         <ModalBody>
-          <FormGroup>
-            <Label htmlFor="title">Title*</Label>
-            <Input
-              type="text"
-              name="title"
-              id="title"
-              required="true"
-              value={resource.title}
-              onChange={handleChange}
-            />
+          <FormGroup row>
+            <Label htmlFor="title" sm={3}>
+              Title*
+            </Label>
+            <Col sm={9}>
+              <Input
+                className={styles.input}
+                type="text"
+                name="title"
+                id="title"
+                required="true"
+                value={resource.title}
+                onChange={handleChange}
+              />
+            </Col>
           </FormGroup>
-          <FormGroup>
-            <Label htmlFor="description">Description</Label>
-            <Input
-              type="text"
-              name="description"
-              id="description"
-              value={resource.description}
-              onChange={handleChange}
-            />
+          <FormGroup row>
+            <Label htmlFor="description" sm={3}>
+              Description
+            </Label>
+            <Col sm={9}>
+              <Input
+                className={styles.input}
+                type="text"
+                name="description"
+                id="description"
+                value={resource.description}
+                onChange={handleChange}
+              />
+            </Col>
           </FormGroup>
-          <FormGroup>
-            <Label htmlFor="url">URL*</Label>
-            <Input
-              type="text"
-              name="url"
-              id="url"
-              required="true"
-              value={resource.url}
-              onChange={handleChange}
-            />
+          <FormGroup row>
+            <Label htmlFor="url" sm={3}>
+              URL*
+            </Label>
+            <Col sm={9}>
+              <Input
+                className={styles.input}
+                type="text"
+                name="url"
+                id="url"
+                required="true"
+                value={resource.url}
+                onChange={handleChange}
+              />
+            </Col>
           </FormGroup>
-          <FormGroup>
-            <Label for="topic">Topic*</Label>
-            <Input
-              type="select"
-              name="topic"
-              id="topic"
-              required="true"
-              value={resource.topic}
-              onChange={handleChange}
-            >
-              {topics.map((topic, i) => {
-                return (
-                  <option key={i} value={topic._id}>
-                    {topic.topicName}
-                  </option>
-                );
-              })}
-            </Input>
-            <FormText color="muted">* indicates required field</FormText>
+          <FormGroup row>
+            <Label htmlFor="type" sm={3}>
+              Type
+            </Label>
+            <Col sm={9}>
+              <Input
+                className={styles.input}
+                type="select"
+                name="type"
+                id="type"
+                required="false"
+                value={resource.type}
+                onChange={handleChange}
+              >
+                <option disabled> </option>
+                <option value="Stack Overflow">Stack Overflow</option>
+                <option value="Documentation">Documentation</option>
+                <option value="Video">Video</option>
+                <option value="Blog">Blog</option>
+                <option value="E-Course">E-Course</option>
+                <option value="Game">Game</option>
+                <option value="Podcast">Podcast</option>
+                <option value="Meetup">Meetup</option>
+                <option value="Meetup">Misc.</option>
+              </Input>
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label htmlFor="topic" sm={3}>
+              Topic*
+            </Label>
+            <Col sm={9}>
+              <Input
+                className={styles.input}
+                type="select"
+                name="topic"
+                id="topic"
+                required="true"
+                value={resource.topic}
+                onChange={handleChange}
+              >
+                <option disabled></option>
+                {topics.map((topic, i) => {
+                  return (
+                    <option key={i} value={topic._id}>
+                      {topic.topicName}
+                    </option>
+                  );
+                })}
+              </Input>
+
+              <FormText color="muted">* indicates required field</FormText>
+            </Col>
           </FormGroup>
         </ModalBody>
         <ModalFooter>
@@ -113,6 +172,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.5)",
             }}
             onClick={createResource}
+            type="submit"
           >
             Add
           </Button>

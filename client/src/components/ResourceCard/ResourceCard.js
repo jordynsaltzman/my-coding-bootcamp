@@ -1,11 +1,20 @@
 import React from "react";
 import styles from "./ResourceCard.module.css";
-import { Button, Col, Row, Card, CardTitle, CardText } from "reactstrap";
+import {
+  Button,
+  Col,
+  Row,
+  Card,
+  CardTitle,
+  CardText,
+  CardSubtitle,
+} from "reactstrap";
 
 const ResourceCard = ({
   title,
   description,
   link,
+  type,
   topic,
   resource,
   handleDeleteResource,
@@ -17,6 +26,11 @@ const ResourceCard = ({
   return (
     <Col sm="6" md="6" lg="4">
       <Card body className={styles.card}>
+        <CardSubtitle
+          style={{ textAlign: "right", color: "#979fa5", fontSize: "15px" }}
+        >
+          {type}
+        </CardSubtitle>
         <CardTitle className={styles.cardTitle}>{title}</CardTitle>
         <CardText>{description}</CardText>
         <Row>
