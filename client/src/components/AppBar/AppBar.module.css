@@ -13,7 +13,7 @@
 
 .navLink {
   height: 28%;
-  color: rgb(255, 0, 70);
+  color: #222;
   font-size: 19px;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
@@ -23,7 +23,7 @@
 }
 
 .navLink:hover {
-  color: #222;
+  color: #66c7c5;
   text-decoration: none;
 }
 

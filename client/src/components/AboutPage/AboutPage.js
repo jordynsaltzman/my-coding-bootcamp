@@ -1,16 +1,21 @@
 import React from "react";
 import styles from "./AboutPage.module.css";
 import { Row, Col, Container, Button } from "reactstrap";
-import Navbar from "../Navbar/Navbar";
+import AppBar from "../AppBar/AppBar";
 
 const AboutPage = (props) => {
   const getStartedBtn = () => {
-    props.history.push("/login");
+    const token = localStorage.getItem("token");
+    if (!token) {
+      props.history.push("/login");
+    } else {
+      props.history.push("/home");
+    }
   };
 
   return (
     <Container className={styles.container} fluid={true}>
-      <Navbar />
+      <AppBar />
       <Row className={styles.row}>
         <Col
           sm="12"

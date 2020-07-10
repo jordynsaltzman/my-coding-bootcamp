@@ -6,7 +6,7 @@ import styles from "./LoginWindow.module.css";
 import { Container, Row, Col } from "reactstrap";
 import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
-import Navbar from "../Navbar/Navbar";
+import AppBar from "../AppBar/AppBar";
 import axios from "axios";
 import API from "../../api/API";
 
@@ -93,7 +93,7 @@ const LoginWindow = (props) => {
 
   return (
     <Container className={styles.container} fluid={true}>
-      <Navbar />
+      <AppBar />
       <Row>
         <Col className={styles.loginBox} sm="12" md={{ size: 4, offset: 4 }}>
           <Row>
