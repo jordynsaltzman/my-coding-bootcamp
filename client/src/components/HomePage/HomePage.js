@@ -7,7 +7,10 @@ import TopicTabs from "../TopicTabs/TopicTabs";
 
 const HomePage = () => {
   const [modal, setModal] = useState(false);
+  const [activeTabs, setActiveTabs] = useState("0");
   const toggle = () => setModal(!modal);
+
+  const toggleTabs = (val) => setActiveTabs(val);
 
   return (
     <Container className={styles.container} fluid={true}>
@@ -18,7 +21,7 @@ const HomePage = () => {
             <i className="fa fa-plus" aria-hidden="true"></i>
             {`  New Resource`}
           </Button>
-          <Button className={styles.addBtn}>
+          <Button className={styles.addBtn} onClick={() => toggleTabs("100")}>
             <i className="fa fa-plus" aria-hidden="true"></i>
             {`  New Topic`}
           </Button>
@@ -28,7 +31,12 @@ const HomePage = () => {
           </Button>
         </Col>
         <Col sm="12" md="9" lg="9">
-          <TopicTabs toggleModal={toggle} modalOpen={modal} />
+          <TopicTabs
+            toggleModal={toggle}
+            modalOpen={modal}
+            activeTab={activeTabs}
+            toggle={toggleTabs}
+          />
         </Col>
       </Row>
       {/* <ResourceForm toggle={toggle} modalOpen={modal} /> */}
