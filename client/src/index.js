@@ -7,6 +7,8 @@ import userReducer from "./reducers/userReducer";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { BrowserRouter, Route } from "react-router-dom";
+
 
 // save redux state to session storage
 const saveToSessionStorage = (state) => {
@@ -48,4 +50,7 @@ store.subscribe(() => saveToSessionStorage(store.getState()));
 const token = localStorage.getItem("token");
 axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+<BrowserRouter>
+<App />
+</BrowserRouter>, document.getElementById("root"));

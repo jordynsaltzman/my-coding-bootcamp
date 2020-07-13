@@ -10,7 +10,6 @@ import AppBar from "../AppBar/AppBar";
 import axios from "axios";
 
 const LoginWindow = (props) => {
-  console.log(props);
   const [activeView, setActiveView] = useState("1");
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const [registerError, setRegisterError] = useState("none");
