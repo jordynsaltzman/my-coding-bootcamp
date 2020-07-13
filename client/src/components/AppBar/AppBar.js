@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import logo from "../../images/myCodingBootcampLogo.png";
 import {
   Row,
@@ -18,7 +18,7 @@ import styles from "./AppBar.module.css";
 const AppBar = (props) => {
   let history = useHistory();
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
     history.push("/login");
   };
 
@@ -73,13 +73,11 @@ const AppBar = (props) => {
         <a href={props.loggedIn}>
           <img className={styles.logo} src={logo} alt="logo" />
         </a>
-
         <p className={styles.navLink}>
           <a href="/about" className={styles.navLink}>
             How It Works
           </a>
         </p>
-
         {token ? <Button onClick={handleLogout}>Logout</Button> : null}
       </Col> */}
     </Row>
@@ -106,4 +104,4 @@ const AppBar = (props) => {
   );
 };
 
-export default AppBar;
+export default withRouter(AppBar);

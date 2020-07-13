@@ -8,9 +8,9 @@ import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
 import AppBar from "../AppBar/AppBar";
 import axios from "axios";
-import API from "../../api/API";
 
 const LoginWindow = (props) => {
+  console.log(props);
   const [activeView, setActiveView] = useState("1");
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const [registerError, setRegisterError] = useState("none");
@@ -47,8 +47,6 @@ const LoginWindow = (props) => {
     });
   };
 
-  let history = useHistory();
-
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(userLoginInfo);
@@ -57,10 +55,10 @@ const LoginWindow = (props) => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
+        props.history.push("/home");
         axios.defaults.headers.common[
           "authorization"
         ] = `Bearer ${response.data.token}`;
-        props.history.push("/home");
       })
       .catch((error) => {
         console.log(error);
@@ -165,15 +163,6 @@ const LoginWindow = (props) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  user,
-});
-
-const mapDispatchToProps = {
-  userLogin,
-  userLogout,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginWindow);
+export default LoginWindow;
 
 // export default LoginWindow;
