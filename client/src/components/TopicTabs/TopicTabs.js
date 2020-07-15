@@ -142,8 +142,8 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
 
         {userTopics.map((topic, i) => {
           return (
-            <>
-              <TabContent activeTab={activeTab} key={i}>
+            <React.Fragment key={i}>
+              <TabContent activeTab={activeTab}>
                 <TabPane tabId={i}>
                   <Row>
                     <Col>
@@ -151,7 +151,7 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
                         onClick={() => confirmModal(topic)}
                         className={styles.deleteBtn}
                       >
-                        Delete Topic
+                        <i className="fas fa-trash-alt"> </i> Delete Topic
                       </Button>
                     </Col>
                   </Row>
@@ -174,7 +174,7 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
                 </TabPane>
               </TabContent>
               <Modal
-                centered="true"
+                centered={true}
                 isOpen={modal.value}
                 toggle={closeModal}
                 backdrop="static"
@@ -219,7 +219,7 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
                   </Button>
                 </ModalFooter>
               </Modal>
-            </>
+            </React.Fragment>
           );
         })}
       </Col>

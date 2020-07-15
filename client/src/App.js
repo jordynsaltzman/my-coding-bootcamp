@@ -8,10 +8,10 @@ import { Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <Switch >
+    <Switch>
       <UnauthRoutes path="/login" component={LoginWindow} />
       <Route path="/about" component={AboutPage} />
-      <AuthRoutes path="/home" component={HomePage} />
+      <AuthRoutes path="/" component={HomePage} />
     </Switch>
   );
 };

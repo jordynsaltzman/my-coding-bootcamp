@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./ResourceForm.module.css";
 import {
   Button,
@@ -16,7 +16,6 @@ import {
 import API from "../../api/API";
 
 const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
-  const [topicList, setTopicList] = useState([]);
   const [resource, setResource] = useState({
     title: "",
     description: "",
@@ -46,13 +45,6 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
       });
     });
   };
-
-  useEffect(() => {
-    API.getUserTopics().then((res) => {
-      console.log(res.data);
-      setTopicList(res.data);
-    });
-  }, []);
 
   return (
     <Modal isOpen={modalOpen} toggle={toggle} backdrop="static" centered={true}>

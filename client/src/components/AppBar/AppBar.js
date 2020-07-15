@@ -1,21 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory, withRouter } from "react-router-dom";
 import logo from "../../images/myCodingBootcampLogo.png";
-import {
-  Row,
-  Col,
-  Button,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Row, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 import styles from "./AppBar.module.css";
 
-const AppBar = (props) => {
+const AppBar = () => {
   let history = useHistory();
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -24,10 +13,6 @@ const AppBar = (props) => {
 
   const token = localStorage.getItem("token");
 
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleNavbar = () => setCollapsed(!collapsed);
-
   return (
     <Row className={styles.nav}>
       <NavbarBrand href={token ? "/home" : "/login"} className="mr-auto">
@@ -35,7 +20,7 @@ const AppBar = (props) => {
       </NavbarBrand>
 
       {token ? (
-        <Nav pullRight>
+        <Nav pullright="true">
           <NavItem>
             <NavLink className={styles.navLink} href="/about">
               How It Works
@@ -46,14 +31,14 @@ const AppBar = (props) => {
             <NavLink
               className={styles.navLink}
               onClick={handleLogout}
-              style={{ color: "rgb(255, 0, 70)" }}
+              href="#!"
             >
               Logout
             </NavLink>
           </NavItem>
         </Nav>
       ) : (
-        <Nav pullRight>
+        <Nav pullright="true">
           <NavItem>
             <NavLink className={styles.navLink} href="/about">
               How It Works

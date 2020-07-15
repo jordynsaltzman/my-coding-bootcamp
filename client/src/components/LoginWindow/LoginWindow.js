@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { userLogin, userLogout } from "../../actions/userActions";
-import { connect } from "react-redux";
 import styles from "./LoginWindow.module.css";
 import { Container, Row, Col } from "reactstrap";
 import SignupForm from "../SignupForm/SignupForm";

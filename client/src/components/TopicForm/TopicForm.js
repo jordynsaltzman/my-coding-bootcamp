@@ -39,9 +39,9 @@ const TopicForm = ({ handleCreate }) => {
               onChange={handleInputChange}
               placeholder="E.g. Redux, Python, Algorithms..."
             />
-            <InputGroupAddon addonType="append" classname={styles.button}>
+            <InputGroupAddon addonType="append" className={styles.button}>
               <Button
-                classname={styles.button}
+                className={styles.button}
                 onClick={createTopic}
                 style={{
                   backgroundColor: "rgb(255, 0, 70)",

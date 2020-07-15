@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SignupForm.module.css";
 import { Row, Col, Button } from "reactstrap";
-import { PromiseProvider } from "mongoose";
 
 const SignupForm = ({
   handleChange,
@@ -50,7 +49,6 @@ const SignupForm = ({
             name={emailName}
             value={emailValue}
             onChange={handleChange}
-            type="email"
             placeholder="Email"
           />
           <input

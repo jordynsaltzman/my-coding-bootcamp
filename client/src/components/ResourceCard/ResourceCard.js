@@ -31,8 +31,10 @@ const ResourceCard = ({
         >
           {type}
         </CardSubtitle>
+
         <CardTitle className={styles.cardTitle}>{title}</CardTitle>
         <CardText>{description}</CardText>
+
         <Row>
           <Col xs="3" sm="3" md="3" lg="3">
             <Button
@@ -48,7 +50,7 @@ const ResourceCard = ({
           </Col>
           <Col xs="9" sm="9" md="9" lg="9">
             <Button style={{ width: "100%" }} onClick={goToResource}>
-              <i class="fas fa-door-open"> </i> Open
+              Open
             </Button>
           </Col>
         </Row>

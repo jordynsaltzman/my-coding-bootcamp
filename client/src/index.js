@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
+import { createStore } from "redux";
+// import { Provider } from "react-redux";
+// import thunk from "redux-thunk";
 import userReducer from "./reducers/userReducer";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { BrowserRouter, Route } from "react-router-dom";
-
+import { BrowserRouter } from "react-router-dom";
 
 // save redux state to session storage
 const saveToSessionStorage = (state) => {
@@ -51,6 +50,8 @@ const token = localStorage.getItem("token");
 axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
 
 ReactDOM.render(
-<BrowserRouter>
-<App />
-</BrowserRouter>, document.getElementById("root"));
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);

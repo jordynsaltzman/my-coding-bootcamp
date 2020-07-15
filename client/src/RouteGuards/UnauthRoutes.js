@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 const UnauthRoutes = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ const UnauthRoutes = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/home",
+              pathname: "/",
             }}
           />
         )

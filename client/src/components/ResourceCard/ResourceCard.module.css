@@ -14,3 +14,10 @@
   margin-bottom: 20px;
   color: whitesmoke;
 }
+
+div.card-subtitle {
+  text-align: right !important;
+  font-size: 15px !important;
+  color: #979fa5 !important;
+  /* style={{ textAlign: "right", color: "#979fa5", fontSize: "15px" }} */
+}

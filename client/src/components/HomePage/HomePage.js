@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./HomePage.module.css";
 import { Row, Col, Container, Button } from "reactstrap";
 import AppBar from "../AppBar/AppBar";
-import ResourceForm from "../ResourceForm/ResourceForm";
 import TopicTabs from "../TopicTabs/TopicTabs";
 
 const HomePage = () => {
