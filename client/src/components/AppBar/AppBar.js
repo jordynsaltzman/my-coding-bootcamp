@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHistory, withRouter } from "react-router-dom";
 import logo from "../../images/myCodingBootcampLogo.png";
 import { Row, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
@@ -9,10 +10,6 @@ const AppBar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     history.push("/login");
-  };
-
-  const handleAbout = () => {
-    history.push("/about");
   };
 
   const token = localStorage.getItem("token");
@@ -54,7 +51,7 @@ const AppBar = () => {
       ) : (
         <Nav pullright="true">
           <NavItem>
-            <NavLink className={styles.navLink} onClick={handleAbout} href="#!">
+            <NavLink className={styles.navLink} tag={Link} to="/about">
               How It Works
             </NavLink>
           </NavItem>
