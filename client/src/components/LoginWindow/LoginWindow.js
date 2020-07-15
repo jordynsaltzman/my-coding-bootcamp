@@ -89,7 +89,12 @@ const LoginWindow = (props) => {
     <Container className={styles.container} fluid={true}>
       <AppBar />
       <Row>
-        <Col className={styles.loginBox} sm="12" md={{ size: 4, offset: 4 }}>
+        <Col
+          className={styles.loginBox}
+          sm="12"
+          md={{ size: 4, offset: 4 }}
+          lg={{ size: 4, offset: 4 }}
+        >
           <Row>
             <Col
               xs="6"
