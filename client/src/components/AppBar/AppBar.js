@@ -15,14 +15,24 @@ const AppBar = () => {
 
   return (
     <Row className={styles.nav}>
-      <NavbarBrand href={token ? "/home" : "/login"} className="mr-auto">
+      <NavbarBrand
+        href={
+          token
+            ? "https://mycodingbootcamp.herokuapp.com/home"
+            : "https://mycodingbootcamp.herokuapp.com/login"
+        }
+        className="mr-auto"
+      >
         <img className={styles.logo} src={logo} alt="logo" />
       </NavbarBrand>
 
       {token ? (
         <Nav pullright="true">
           <NavItem>
-            <NavLink className={styles.navLink} href="/about">
+            <NavLink
+              className={styles.navLink}
+              href="https://mycodingbootcamp.herokuapp.com/about"
+            >
               How It Works
             </NavLink>
           </NavItem>
