@@ -92,8 +92,8 @@ const LoginWindow = (props) => {
         <Col
           className={styles.loginBox}
           sm="12"
-          md={{ size: 4, offset: 4 }}
-          lg={{ size: 4, offset: 4 }}
+          md="4"
+          lg="4"
         >
           <Row>
             <Col
