@@ -11,6 +11,10 @@ const AppBar = () => {
     history.push("/login");
   };
 
+  const handleAbout = () => {
+    history.push("/about");
+  };
+
   const token = localStorage.getItem("token");
 
   return (
@@ -50,7 +54,7 @@ const AppBar = () => {
       ) : (
         <Nav pullright="true">
           <NavItem>
-            <NavLink className={styles.navLink} href="/about">
+            <NavLink className={styles.navLink} onClick={handleAbout} href="#!">
               How It Works
             </NavLink>
           </NavItem>
