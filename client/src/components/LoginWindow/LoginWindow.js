@@ -45,7 +45,6 @@ const LoginWindow = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(userLoginInfo);
     axios
       .post("/login", userLoginInfo)
       .then((response) => {
@@ -89,12 +88,7 @@ const LoginWindow = (props) => {
     <Container className={styles.container} fluid={true}>
       <AppBar />
       <Row>
-        <Col
-          className={styles.loginBox}
-          sm="12"
-          md="4"
-          lg="4"
-        >
+        <Col className={styles.loginBox} sm="12" md="4" lg="4">
           <Row>
             <Col
               xs="6"
