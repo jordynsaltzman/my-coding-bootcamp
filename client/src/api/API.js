@@ -2,15 +2,15 @@ import axios from "axios";
 
 export default {
   getUserTopics: () => {
-    return axios.get("http://localhost:5000/topics/own");
+    return axios.get("/topics/own");
   },
 
   createNewTopic: (topic) => {
-    return axios.post("http://localhost:5000/topics/new", topic);
+    return axios.post("/topics/new", topic);
   },
 
   deleteTopic: (id) => {
-    return axios.delete("http://localhost:5000/topics/delete/" + id);
+    return axios.delete("/topics/delete/" + id);
   },
 
   getOneTopic: (id) => {
@@ -26,7 +26,7 @@ export default {
   },
 
   createNewResource: (newResource) => {
-    return axios.post("http://localhost:5000/resources/new", newResource);
+    return axios.post("/resources/new", newResource);
   },
 
   updateResource: (data) => {
@@ -41,6 +41,6 @@ export default {
       },
       data: resource,
     };
-    return axios.delete("http://localhost:5000/resources/delete", config);
+    return axios.delete("/resources/delete", config);
   },
 };

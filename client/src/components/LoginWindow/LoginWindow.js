@@ -72,7 +72,7 @@ const LoginWindow = (props) => {
     e.preventDefault();
     console.log(userRegisterInfo);
     axios
-      .post("http://localhost:5000/register", userRegisterInfo)
+      .post("/register", userRegisterInfo)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
