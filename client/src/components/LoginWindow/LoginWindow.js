@@ -47,7 +47,7 @@ const LoginWindow = (props) => {
     e.preventDefault();
     console.log(userLoginInfo);
     axios
-      .post("https://mycodingbootcamp.herokuapp.com/login", userLoginInfo)
+      .post("/login", userLoginInfo)
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
