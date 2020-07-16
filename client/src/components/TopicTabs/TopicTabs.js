@@ -20,7 +20,6 @@ import TopicForm from "../TopicForm/TopicForm";
 import ResourceForm from "../ResourceForm/ResourceForm";
 
 const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
-  //const [activeTab, setActiveTab] = useState("0");
   let [userTopics, setUserTopics] = useState([]);
   const [modal, setModal] = useState({
     value: false,
@@ -50,12 +49,7 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
     });
   }, []);
 
-  // const toggle = (tab) => {
-  //   if (activeTab !== tab) setActiveTab(tab);
-  // };
-
   const handleDelete = (id) => {
-    //show modal that asks if user is sure they want to delete the topic
     closeModal();
     API.deleteTopic(id).then((res) => {
       API.getUserTopics().then((res) => {

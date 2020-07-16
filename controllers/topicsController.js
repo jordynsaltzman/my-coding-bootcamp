@@ -19,20 +19,24 @@ module.exports = {
   },
 
   findTopicByUser: (req, res) => {
-    Topic.find({ user: req.user._id }).then((doc) => {
-      res.send(doc);
-    });
+    Topic.find({ user: req.user._id })
+      .then((doc) => {
+        res.send(doc);
+      })
+      .catch((err) => res.status(422).json(err));
   },
 
   findTopicById: (req, res) => {
-    Topic.find({ _id: req.params.id }).then((topic) => {
-      res.send(topic);
-    });
+    Topic.find({ _id: req.params.id })
+      .then((topic) => {
+        res.send(topic);
+      })
+      .catch((err) => res.status(422).json(err));
   },
 
   deleteTopic: (req, res) => {
-    Topic.findByIdAndRemove({ _id: req.params.id }).then((doc) =>
-      res.send(doc)
-    );
+    Topic.findByIdAndRemove({ _id: req.params.id })
+      .then((doc) => res.send(doc))
+      .catch((err) => res.status(422).json(err));
   },
 };

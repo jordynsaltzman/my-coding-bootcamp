@@ -38,8 +38,8 @@ const AboutPage = (props) => {
           <h2 className={styles.header}>Find Coding Resourses</h2>
           <p className={styles.description}>
             From documentaion, to Stack Overflow threads, to helpful Youtube
-            videos, you turn to an abundance of online resources as you learn to
-            code.
+            videos, you turn to an abundance of online learning material as you
+            learn to code.
           </p>
         </Col>
         <Col
@@ -62,8 +62,8 @@ const AboutPage = (props) => {
           ></i>
           <h2 className={styles.header}>Save Your Favorites</h2>
           <p className={styles.description}>
-            Group your most frequented and useful sites into topics of your
-            choice. There is no limit to how many you can add!
+            Group your most frequented and favorite resources into topics of
+            your choice. There is no limit to how many you can add!
           </p>
         </Col>
         <Col

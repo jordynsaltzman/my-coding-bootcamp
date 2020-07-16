@@ -38,7 +38,6 @@ const HomePage = () => {
           />
         </Col>
       </Row>
-      {/* <ResourceForm toggle={toggle} modalOpen={modal} /> */}
     </Container>
   );
 };
