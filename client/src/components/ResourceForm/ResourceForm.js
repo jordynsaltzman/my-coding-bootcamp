@@ -53,106 +53,90 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
       </ModalHeader>
       <Form style={{ fontFamily: "'Karla', sans-serif", fontSize: "16px" }}>
         <ModalBody>
-          <FormGroup row>
-            <Label htmlFor="title" sm={3}>
-              Title*
-            </Label>
-            <Col sm={9}>
-              <Input
-                className={styles.input}
-                type="text"
-                name="title"
-                id="title"
-                required="true"
-                value={resource.title}
-                onChange={handleChange}
-              />
-            </Col>
+          <FormGroup>
+            <Input
+              className={styles.input}
+              placeholder="Title*"
+              type="text"
+              name="title"
+              id="title"
+              required="true"
+              value={resource.title}
+              onChange={handleChange}
+            />
           </FormGroup>
-          <FormGroup row>
-            <Label htmlFor="description" sm={3}>
-              Description
-            </Label>
-            <Col sm={9}>
-              <Input
-                className={styles.input}
-                type="text"
-                name="description"
-                id="description"
-                value={resource.description}
-                onChange={handleChange}
-              />
-            </Col>
+          <FormGroup>
+            <Input
+              placeholder="Description"
+              className={styles.input}
+              type="text"
+              name="description"
+              id="description"
+              value={resource.description}
+              onChange={handleChange}
+            />
           </FormGroup>
-          <FormGroup row>
-            <Label htmlFor="url" sm={3}>
-              URL*
-            </Label>
-            <Col sm={9}>
-              <Input
-                className={styles.input}
-                type="text"
-                name="url"
-                id="url"
-                required="true"
-                value={resource.url}
-                onChange={handleChange}
-              />
-            </Col>
+          <FormGroup>
+            <Input
+              className={styles.input}
+              placeholder="URL*"
+              type="text"
+              name="url"
+              id="url"
+              required="true"
+              value={resource.url}
+              onChange={handleChange}
+            />
           </FormGroup>
-          <FormGroup row>
-            <Label htmlFor="type" sm={3}>
-              Type
-            </Label>
-            <Col sm={9}>
-              <Input
-                className={styles.input}
-                type="select"
-                name="type"
-                id="type"
-                required="false"
-                value={resource.type}
-                onChange={handleChange}
-              >
-                <option disabled> </option>
-                <option value="Stack Overflow">Stack Overflow</option>
-                <option value="Documentation">Documentation</option>
-                <option value="Video">Video</option>
-                <option value="Blog">Blog</option>
-                <option value="E-Course">E-Course</option>
-                <option value="Game">Game</option>
-                <option value="Podcast">Podcast</option>
-                <option value="Meetup">Meetup</option>
-                <option value="Meetup">Misc.</option>
-              </Input>
-            </Col>
+          <FormGroup>
+            <Input
+              className={styles.input}
+              placeholder="Type"
+              type="select"
+              name="type"
+              id="type"
+              required="false"
+              value={resource.type}
+              onChange={handleChange}
+            >
+              <option value="" disabled selected>
+                {" "}
+                Type{" "}
+              </option>
+              <option value="Stack Overflow">Stack Overflow</option>
+              <option value="Documentation">Documentation</option>
+              <option value="Video">Video</option>
+              <option value="Blog">Blog</option>
+              <option value="E-Course">E-Course</option>
+              <option value="Game">Game</option>
+              <option value="Podcast">Podcast</option>
+              <option value="Meetup">Meetup</option>
+              <option value="Meetup">Misc.</option>
+            </Input>
           </FormGroup>
-          <FormGroup row>
-            <Label htmlFor="topic" sm={3}>
-              Topic*
-            </Label>
-            <Col sm={9}>
-              <Input
-                className={styles.input}
-                type="select"
-                name="topic"
-                id="topic"
-                required="true"
-                value={resource.topic}
-                onChange={handleChange}
-              >
-                <option disabled></option>
-                {topics.map((topic, i) => {
-                  return (
-                    <option key={i} value={topic._id}>
-                      {topic.topicName}
-                    </option>
-                  );
-                })}
-              </Input>
+          <FormGroup>
+            <Input
+              className={styles.input}
+              type="select"
+              name="topic"
+              id="topic"
+              required="true"
+              value={resource.topic}
+              onChange={handleChange}
+            >
+              <option value="" disabled selected>
+                Topic*
+              </option>
+              {topics.map((topic, i) => {
+                return (
+                  <option key={i} value={topic._id}>
+                    {topic.topicName}
+                  </option>
+                );
+              })}
+            </Input>
 
-              <FormText color="muted">* indicates required field</FormText>
-            </Col>
+            <FormText color="muted">* indicates required field</FormText>
           </FormGroup>
         </ModalBody>
         <ModalFooter>
