@@ -29,3 +29,19 @@
   background-color: rgb(255, 0, 70) !important;
   border-color: rgb(255, 0, 70) !important;
 }
+
+@media only screen and (max-width: 411px) {
+  .col-form-label {
+    padding-top: 0px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .modal-body {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .modal-header {
+    padding: 0.5rem 1rem !important;
+  }
+}
