@@ -55,7 +55,7 @@
   }
 }
 
-@media only screen and (max-width: 411px) {
+@media only screen and (max-width: 415px) {
   .addBtn {
     width: 30%;
     margin: 5px 2px !important;
