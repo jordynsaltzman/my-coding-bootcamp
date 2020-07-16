@@ -108,6 +108,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               <option value="Video">Video</option>
               <option value="Blog">Blog</option>
               <option value="Article">Article</option>
+              <option value="Forum">Forum</option>
               <option value="E-Course">E-Course</option>
               <option value="Game">Game</option>
               <option value="Podcast">Podcast</option>
