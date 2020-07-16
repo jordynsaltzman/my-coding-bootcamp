@@ -46,8 +46,6 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
 
   useEffect(() => {
     API.getUserTopics().then((res) => {
-      console.log(res.data);
-
       setUserTopics(res.data);
     });
   }, []);
@@ -60,7 +58,6 @@ const TopicTabs = ({ toggleModal, modalOpen, activeTab, toggle }) => {
     //show modal that asks if user is sure they want to delete the topic
     closeModal();
     API.deleteTopic(id).then((res) => {
-      console.log(res);
       API.getUserTopics().then((res) => {
         setUserTopics(res.data);
       });

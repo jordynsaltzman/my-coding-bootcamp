@@ -48,7 +48,7 @@ const LoginWindow = (props) => {
     axios
       .post("/login", userLoginInfo)
       .then((response) => {
-        console.log(response);
+        //let name = res.data.firstName
         localStorage.setItem("token", response.data.token);
         props.history.push("/home");
         axios.defaults.headers.common[
