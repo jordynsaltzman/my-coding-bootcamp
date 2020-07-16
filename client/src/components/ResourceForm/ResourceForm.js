@@ -107,11 +107,12 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               <option value="Documentation">Documentation</option>
               <option value="Video">Video</option>
               <option value="Blog">Blog</option>
+              <option value="Article">Article</option>
               <option value="E-Course">E-Course</option>
               <option value="Game">Game</option>
               <option value="Podcast">Podcast</option>
               <option value="Meetup">Meetup</option>
-              <option value="Meetup">Misc.</option>
+              <option value="Misc.">Misc.</option>
             </Input>
           </FormGroup>
           <FormGroup>
