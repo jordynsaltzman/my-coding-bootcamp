@@ -8,6 +8,7 @@ router.get("/:id", verify, resourceController.findAllResources);
 
 //get one resource
 router.get("/id/:id", verify, resourceController.findResourceById);
+
 //create a new resource
 router.post("/new", verify, resourceController.createNewResource);
 

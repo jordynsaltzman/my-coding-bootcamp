@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://jordynsaltzman:Maisy1995%21@cluster0-fmmgk.mongodb.net/bootcamp?retryWrites=true&w=majority",
+  process.env.MONGODB_URI,
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,

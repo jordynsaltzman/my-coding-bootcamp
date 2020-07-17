@@ -4,9 +4,7 @@ const Topic = require("../models/topic");
 module.exports = {
   findAllResources: (req, res) => {
     Resource.find({ topic: req.params.id })
-      .then((doc) => {
-        res.send(doc);
-      })
+      .then((doc) => res.send(doc))
       .catch((err) => res.status(422).json(err));
   },
 
