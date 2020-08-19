@@ -41,7 +41,8 @@
   color: #66c7c5 !important;
 }
 
-.input {
+.input,
+.input:-webkit-autofill {
   font-family: "Karla", sans-serif;
   width: 100%;
   margin: 10px 0px;
@@ -49,14 +50,35 @@
   border-radius: 20px;
   border: 1px solid white;
   color: white;
+  -webkit-text-fill-color: white !important;
+
   background: transparent;
-  transition: background-color ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
 }
 
-.input:focus {
+.input:focus,
+.input:-webkit-autofill:focus {
   outline: none;
-  background-color: rgb(255, 0, 70);
-  border-color: rgb(255, 0, 70);
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255, 0, 70) inset;
+  background-color: rgb(255, 0, 70) !important;
+  border-color: rgb(255, 0, 70) !important
+  ;
+}
+
+@-webkit-keyframes autofill {
+  0%,
+  100% {
+    color: white !important;
+    background: transparent !important;
+  }
+}
+
+.input:-webkit-autofill,
+.input.input:-webkit-autofill:visited {
+  -webkit-animation-delay: 1s !important; /* Safari support - any positive time runs instantly */
+  -webkit-animation-name: autofill !important;
+  -webkit-animation-fill-mode: both !important;
 }
 
 .errorMsg {
@@ -72,6 +94,7 @@
     padding: 5px 20px;
     margin: 5px 0px;
   }
+
   .loginBtn {
     margin: 10px 0px;
     padding: 5px 5px !important;

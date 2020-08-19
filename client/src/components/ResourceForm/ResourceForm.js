@@ -63,6 +63,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               required="true"
               value={resource.title}
               onChange={handleChange}
+              autocomplete="off"
             />
           </FormGroup>
           <FormGroup>
@@ -74,6 +75,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               id="description"
               value={resource.description}
               onChange={handleChange}
+              autocomplete="off"
             />
           </FormGroup>
           <FormGroup>
@@ -86,6 +88,7 @@ const ResourceForm = ({ toggle, modalOpen, topics, getTopics }) => {
               required="true"
               value={resource.url}
               onChange={handleChange}
+              autocomplete="off"
             />
           </FormGroup>
           <FormGroup>
